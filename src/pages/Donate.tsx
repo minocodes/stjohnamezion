@@ -1,10 +1,10 @@
 import React from 'react'
 import { Container, Typography } from "@mui/material";
 
-const Contact = () => {
+const Donate = () => {
     return (
         <Container>
-            <h1>Contact: </h1>
+            <h1>Donate:  </h1>
 
           <Typography variant="h3" color="primary" gutterBottom>
             Welcome to St. John’s AME Zion Church
@@ -17,4 +17,4 @@ const Contact = () => {
     
 }
 
-export default Contact
+export default Donate
