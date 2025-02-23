@@ -15,7 +15,7 @@ const About = () => {
       <Grid container spacing={4}>
         {/* Mission Section */}
         <Grid item xs={12} md={6}>
-          <Paper sx={{ padding: 2, backgroundColor: "#f5f5f5" }}>
+          <Paper sx={{ padding: 2 }}>
             <Typography variant="h4" color="primary" gutterBottom>
               Our Mission
             </Typography>
@@ -29,7 +29,7 @@ const About = () => {
 
         {/* History Section */}
         <Grid item xs={12} md={6}>
-          <Paper sx={{ padding: 2, backgroundColor: "#f5f5f5" }}>
+          <Paper sx={{ padding: 2 }}>
             <Typography variant="h4" color="primary" gutterBottom>
               Our History
             </Typography>
@@ -43,7 +43,7 @@ const About = () => {
 
         {/* Values Section */}
         <Grid item xs={12} md={6}>
-          <Paper sx={{ padding: 2, backgroundColor: "#f5f5f5" }}>
+          <Paper sx={{ padding: 2 }}>
             <Typography variant="h4" color="primary" gutterBottom>
               Our Core Values
             </Typography>
@@ -61,7 +61,7 @@ const About = () => {
 
         {/* What Visitors Can Expect Section */}
         <Grid item xs={12} md={6}>
-          <Paper sx={{ padding: 2, backgroundColor: "#f5f5f5" }}>
+          <Paper sx={{ padding: 2 }}>
             <Typography variant="h4" color="primary" gutterBottom>
               What You Can Expect
             </Typography>

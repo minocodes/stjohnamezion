@@ -1,4 +1,4 @@
-import React, { useState, useMemo, createContext, ReactNode } from "react";
+import React, { useState, useMemo, createContext, ReactNode, useEffect } from "react";
 import { ThemeProvider as MuiThemeProvider, createTheme, CssBaseline } from "@mui/material";
 
 // Context for Theme Switching
@@ -9,10 +9,17 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [darkMode, setDarkMode] = useState(false);
+  // Get initial theme preference from localStorage or default to light mode
+  const savedTheme = localStorage.getItem("theme") === "dark";
+  const [darkMode, setDarkMode] = useState(savedTheme);
 
+  // Toggle between light and dark themes
   const toggleTheme = () => {
-    setDarkMode((prevMode) => !prevMode);
+    setDarkMode((prevMode) => {
+      const newMode = !prevMode;
+      localStorage.setItem("theme", newMode ? "dark" : "light"); // Save the preference to localStorage
+      return newMode;
+    });
   };
 
   // Light Theme
@@ -26,11 +33,21 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
           background: { default: "#f5f5f5", paper: "#ffffff" },
           text: { primary: "#000000" },
         },
+        components: {
+          MuiPaper: {
+            styleOverrides: {
+              root: {
+                backgroundColor: "#ffffff", // Paper background for light mode
+                color: "#000000", // Text color for light mode
+              },
+            },
+          },
+        },
       }),
     []
   );
 
-  // Dark Theme
+  // Dark Theme with Improved Contrast for Readability
   const darkTheme = useMemo(
     () =>
       createTheme({
@@ -38,8 +55,19 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
           mode: "dark",
           primary: { main: "#ffcc00" }, // Yellow
           secondary: { main: "#388e3c" }, // Green
-          background: { default: "#121212", paper: "#1e1e1e" },
-          text: { primary: "#ffffff" },
+          background: { default: "#121212", paper: "#1a1a1a" }, // Darker paper for better contrast
+          text: { primary: "#ffffff" }, // Light text for dark background
+        },
+        components: {
+          // Style for Paper components to improve text contrast
+          MuiPaper: {
+            styleOverrides: {
+              root: {
+                backgroundColor: "#1a1a1a", // Darker paper background
+                color: "#ffffff", // Light text color
+              },
+            },
+          },
         },
       }),
     []
