@@ -14,12 +14,12 @@ export default function AppRouter() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="events" element={<Events />} />
-          <Route path="donate" element={<Donate />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="visitors" element={<Visitors />} />
-          <Route path="community" element={<Community />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/donate" element={<Donate />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/visitors" element={<Visitors />} />
+          <Route path="/community" element={<Community />} />
         </Route>
       </Routes>
     </Router>

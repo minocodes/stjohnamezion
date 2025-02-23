@@ -1,32 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import AppRouter from "./router";
-import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
+import ThemeProvider from "./context/ThemeProvider"; // Import ThemeContext
+import { CssBaseline, Box } from "@mui/material";
 
-// Example light and dark themes
-const lightTheme = createTheme({
-  palette: {
-    mode: "light",
-    primary: {
-      main: "#ffcc00", // Adjust based on your color scheme
-    },
-  },
-});
+// Root Component that handles theme toggle
+const Root = () => {
 
-const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-    primary: {
-      main: "#ffcc00",
-    },
-  },
-});
+  return (
+    <React.StrictMode>
+      {/* Main Content */}
+      <Box component="main" sx={{  }}>
+        <AppRouter />
+      </Box>
+    </React.StrictMode>
+  );
+};
 
+// Render the application with the ThemeProvider in `main.tsx`
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-<AppRouter />
-    </ThemeProvider>
-  </React.StrictMode>
+  <ThemeProvider>
+    <CssBaseline />
+    <Root />
+  </ThemeProvider>
 );
